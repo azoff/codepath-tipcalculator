@@ -70,10 +70,15 @@ public class CalculatorActivity extends Activity {
 	public boolean render() {
 
 		String result = "";
+		String resultTip;
+		String resultTotal;
 
 		if (tip > 0 && price > 0) {
+			double tipValue = price * tip;
 			NumberFormat formatter = NumberFormat.getCurrencyInstance();
-			result = formatter.format(price * tip);
+			resultTip   = formatter.format(tipValue);
+			resultTotal = formatter.format(tipValue + price);
+			result = String.format("Tip: %s\nTotal: %s", resultTip, resultTotal);
 		}
 
 		tvResult.setText(result);
